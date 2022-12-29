@@ -1,3 +1,33 @@
+create table CODE (ID number(4) primary key,CodeTitle varchar2(40),CodePublishingDate date,Price number (3), CodePublisherID number(2));
+insert into CODE values (0607,'Smart Link App','21-sep-1937',5,1);
+insert into CODE values (0964,'Smart Route App','25-Apr-2017',20,1);
+insert into CODE values (1906,'RAK APP','04-Jul-1992',4,2);
+insert into CODE values (0328,'PINGPANG APP','07-Dec-2010',17,3);
+insert into CODE (ID,key,CodeTitle,CodePublishingDate,CodePublisherID) values (0916,'Find Area App','01-Jan-1999',2);
+insert into CODE values (0973,'Find Square Root App','27-April-2010',17,2);
+---------------------------------------------
+create table CODE_PUBLISHER(ID number(2) primary key,Name varchar2(20),City varchar2(7), PublisherEmail varchar2(30));
+
+insert into CODE_PUBLISHER values(1,'Houghton Mifflin','USA', 'Houghton@yahoo.com');
+insert into CODE_PUBLISHER values(2,'Mallinson Rendel','NZ', 'Mallinson@gmail.com');
+insert into CODE_PUBLISHER values(3,'W. W. Norton','USA', 'Norton@yahoo.com');
+insert into CODE_PUBLISHER values(4,'Pavilion','England', 'Pavilion@hotmail.com');
+--------------------------------------------------------------
+create table DEVELOPER(ID number(3) primary key,Name varchar2(20));
+insert into DEVELOPER values(11,'J. R. R. Tolkien');
+insert into DEVELOPER values(22,'Lynley Dodd');
+insert into DEVELOPER values(33,'Darrell Huff');
+insert into DEVELOPER values(44,'Bob Kerr');
+insert into DEVELOPER values(55,'Margaret Atwood');
+--------------------------------------------------------------
+create table CODE_DEVELOPER(DevID number(3),CodeID number(4),primary key (CodeID,DevID));
+insert into CODE_DEVELOPER values(11,0607);
+insert into CODE_DEVELOPER values(22,1906);
+insert into CODE_DEVELOPER values(33,0328);
+insert into CODE_DEVELOPER values(44,0916);
+insert into CODE_DEVELOPER values(22,0973);
+insert into CODE_DEVELOPER values(55,0964);
+---------------------------------------------------------------
 select codeTitle, codepublishingdate, name from code, code_publisher where code_publisher.id=code.codepublisherid;
 select codeTitle, name, codepublishingdate from code, code_publisher where to_char(codepublishingdate, 'YYYY')=2010 and code.codepublisherid=code_publisher.id;
 select codeTitle || ', ' ||name from code, code_publisher where code.codepublisherid=code_publisher.id;
