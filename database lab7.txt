@@ -1,0 +1,8 @@
+select codeTitle, codepublishingdate, name from code, code_publisher where code_publisher.id=code.codepublisherid;
+select codeTitle, name, codepublishingdate from code, code_publisher where to_char(codepublishingdate, 'YYYY')=2010 and code.codepublisherid=code_publisher.id;
+select codeTitle || ', ' ||name from code, code_publisher where code.codepublisherid=code_publisher.id;
+select codeTitle, name from code, developer, code_developer where code_developer.codeid=code.id and developer.id=devid;
+select codeTitle, developer.name from code, developer, code_developer, code_publisher where length(substr(publisheremail, 1, instr(publisheremail, '@')))>8 and codeid=code.id and developer.id=devid and code_publisher.id=codepublisherid ;
+select codeTitle from code, code_publisher where name='Mallinson Rendel' and codepublisherid=code_publisher.id;
+select codetitle, codepublishingdate from code where codepublishingdate<'07/Dec/2010' ; 
+select name, codetitle from code, code_publisher where codepublisher (+)= id;

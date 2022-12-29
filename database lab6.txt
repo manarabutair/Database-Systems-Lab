@@ -1,0 +1,13 @@
+select lower(title) , upper (type) from book;
+select concat (upper(substr(title, 1,3)), lower(substr(title, 3, length(title)))), lpad(type, 9, '*') from book;
+select to_char(releasedate, 'fmdd/mon/yyyy') from book;
+select * from book where releasedate< '05/Sep/2010';
+select * from book where to_char(releasedate, 'Mon')='Nov';
+select title, nvl(type, 'no type') as type from book;
+select * from book where substr(to_char(releasedate, 'Mon'), 1, 1)='N';
+select * from book where to_char(releasedate, 'Mon')!='Nov';
+select * from book where to_char(releaseDate, 'YYYY')!='1998';
+select * from book where to_char(releasedate, 'Mon/YYYY')='Nov/1998';
+--I do not know how to print a single value in sql so I implemented the answer to a select statement from book table.
+select * from book where releasedate= next_day(add_months('24/10/1990', 6), 'Wednesday');
+select authoremail, decode(authoremail, 'nintendo@yahoo.com', 'Yahoo company','valve@gmail.com', 'Gmail company', 'westwood@yahoo.com', 'Yahoo company', 'Others') company_Name from author;

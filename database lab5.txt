@@ -1,0 +1,28 @@
+create table COURSE (ID number(4) primary key,Title varchar2(40),LectureDate date,LecturePrice number (3), LecturerID number(2));
+insert into COURSE values (2020,'Graph Theory','21-sep-1937',5,1);
+insert into COURSE values (2021,'Algorithm','25-Apr-2017',20,1);
+insert into COURSE values (2022,'Cryptography','04-Jul-1992',4,2);
+insert into COURSE values (2023,'How to Lie with Statistics','07-Dec-2010',17,3);
+insert into COURSE (ID,Title,LectureDate,LecturerID) values (2024,'Software','01-Nov-1999',2);
+insert into COURSE values (2024,'Operating System','27-April-2010',20,2);
+---------------------------------------------
+create table LECTURER (ID number(2) primary key,Name varchar2(20),City varchar2(7), LecturerEmail varchar2(30));
+insert into LECTURER values(1,'Houghton Mifflin','USA', 'Houghton@yahoo.com');
+insert into LECTURER values(2,'Mallinson Rendel','NZ', 'Mallinson@gmail.com');
+insert into LECTURER values(3,'W. W. Norton','USA', 'Norton@yahoo.com');
+insert into LECTURER values(4,'Pavilion','England', 'Pavilion@hotmail.com');
+select * from course;
+select name as Name, city as Address, lectureremail as Email from lecturer;
+select distinct city from lecturer;
+select Title || ' has been given on ' || lecturedate || 'and it costs ' || lectureprice as course_information from course; 
+select * from course where lectureDate like '%17' or lecturedate like '%9_' order by title;
+select * from course where title like '%with%' and id like '202%';
+select * from course where lectureprice is null ;
+select * from course where lectureprice > 7 and title in ('Graph Theory', 'Cryptography'); 
+select title, lectureprice from course where title like 'How%' and lectureprice between 5 and 50;
+select * from lecturer where city like 'U__%';
+select * from lecturer where lectureremail like '%gmail%';
+select id, title, lectureprice from course where lecturerid in (1, 2) and lectureprice not in (4, 20);
+select title, lectureprice*.35 as tax from course order by tax asc;
+select * from course order by lectureprice desc ;
+select * from course order by title asc ;

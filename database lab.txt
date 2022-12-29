@@ -1,0 +1,20 @@
+create table Book (Book_ID number (7) constraint pk primary key, Name varchar2 (20) constraint uq unique, Address varchar2(15) constraint notnull not null, Capacity number (3));
+create table Borrower (Borrower_ID number (5) , Borrower_Name varchar2 (15) constraint pk primary key, Borrower_Age number (2) default 10 constraint greater check(Borrower_age>0), Book_ID number (7) constraint fk references Book(book_id),  Borrower_Date date constraint usd using system date);
+
+alter table Book add BookCopies number (255);
+alter table Borrower add Notes varchar2 (45);
+alter table Borrower drop constraint pk;
+alter table Borrower add Person_ID number(5);
+alter table Borrower add constraint pk primary key(Person_ID);
+alter table Book add constraint notnull not null (Name);
+alter table Borrower modify Borrower_Name varchar2 (20);
+alter table Book drop column bookcopies;
+
+create table Person_table(P_ID Number(5) constraint pkey4 primary key,Bo_ID Number(7),CONSTRAINT BO__ID FOREIGN KEY(Bo_ID) REFERENCES Book (Book_ID));
+
+drop table Borrower;
+rename Book to Book_Information;
+
+SELECT CONSTRAINT_NAME , CONSTRAINT_TYPE, SEARCH_CONDITION FROM USER_CONSTRAINTS WHERE TABLE_NAME='BOOK_INFORMATION';
+SELECT CONSTRAINT_NAME , CONSTRAINT_TYPE, SEARCH_CONDITION FROM USER_CONSTRAINTS WHERE TABLE_NAME='PERSON_TABLE';
+

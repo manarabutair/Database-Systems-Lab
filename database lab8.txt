@@ -1,0 +1,8 @@
+select min(bdate), max(bdate) from customer, baker where name='lina' and id=b_id;
+select min(price) from cupcake, cupcake_amountstatus where amount>=41 and amount<=150;
+select sum(price) from cupcake, cupcake_supplier where amount>50 and address='Amman' and cupcake.supplier_id=cupcake_supplier.supplier_id;
+select address, count(supplier_id) from cupcake_supplier where address is not null group by address;
+select count(distinct(specialty)) from baker;
+select supplier_name, max(price) from cupcake_supplier, cupcake where cupcake_supplier.supplier_id=cupcake.supplier_id group by supplier_name having min(price)>=15;
+select supplier_id , avg(amount) from cupcake group by supplier_id having min(price)<(select price from cupcake where c_name='CupCake4') ;
+
