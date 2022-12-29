@@ -1,3 +1,19 @@
+create table BOOK(BOOKID number(4) primary key,Title varchar2(60),ReleaseDate date,type varchar2(20), AuthorID number(2));
+
+insert into BOOK values (1532,'Book Great World','21-nov-1990','Ethical',1);
+insert into BOOK values (3523,'Alice in Wonderland','21-nov-1998','Adventure',1);
+insert into BOOK values (3412,'Fun-Story','27-nov-98','Comedy',2);
+insert into BOOK values (3567,'Child 2','09-July-2013','ChildBook',2);
+insert into BOOK (BookID,Title,ReleaseDate,AuthorID) values (9786,'Book 2','19-Apr-2011',2);
+insert into BOOK values (4235,'Book Strategy','22-sep-1996','Strategy',3);
+---------------------------------------------
+create table AUTHOR (ID number(2) primary key,Name varchar2(20),Country varchar2(7), AuthorEmail varchar2(30));
+
+insert into AUTHOR values(1,'Nintendo','USA', 'nintendo@yahoo.com');
+insert into AUTHOR values(2,'Valve','USA', 'valve@gmail.com');
+insert into AUTHOR values(3,'West Wood','USA', 'westwood@yahoo.com');
+insert into AUTHOR values(4,'Infinity Ward','USA', 'infinity@hotmail.com');
+-------------------------------------------------------------
 select lower(title) , upper (type) from book;
 select concat (upper(substr(title, 1,3)), lower(substr(title, 3, length(title)))), lpad(type, 9, '*') from book;
 select to_char(releasedate, 'fmdd/mon/yyyy') from book;
