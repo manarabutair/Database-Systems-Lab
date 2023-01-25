@@ -1,0 +1,17 @@
+select * from game where price< (select price from game where game_name='Death Stranding' ) and genre_id = (select genre_id from game where game_name='Team Fortress')
+
+select dev_name from developer where net_worth > (select avg(net_worth) from developer where genre_id = (select genre_id from genre where genre_name='Shooter'))
+
+select * from game where genre_id in (select genre_id from game group by genre_id having count(*)>3)
+
+select dev_name from developer where dev_id=(select developer_id from game where price=(select max(price) from game))
+
+select genre_name, count(*) from game,genre where genre.genre_id=game.genre_id group by genre_name
+
+select dev_name from developer where dev_id in (select dev_id from game group by dev_id having count (dev_id) = (select max(count(dev_id)) from game group by dev_id));
+
+select game_name from game where platform='all' and price> (select min(price) from game)
+
+select game_name from game where developer_id = (select dev_id from developer where length(dev_name)>6)
+
+select dev_name, avg(price) from developer, game where dev_id=developer_id group by dev_name
